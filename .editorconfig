@@ -1,0 +1,14 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+max_line_length = 120
+charset = utf-8
+indent_style = space
+indent_size = 4
+ij_javascript_spaces_within_imports = true
+ij_javascript_force_quote_style = true
+ij_javascript_use_double_quotes = false
+ij_javascript_import_sort_module_name = true
