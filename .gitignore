@@ -1,6 +1,8 @@
 # Node artifact files
 node_modules/
 dist/
+lib/
+es/
 
 # Log files
 *.log
