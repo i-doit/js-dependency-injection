@@ -1,4 +1,5 @@
 import { ensure, reduce } from '../utils';
+import Di from './Di';
 import { Definition, Parameter } from './Resolveable';
 import Ref from './Resolveable/Ref/Ref';
 
@@ -122,17 +123,16 @@ export default class DiBuilder {
     }
 
     /**
-     * @return {Object.<string, Object>}
+     * @returns {{get:function(string):*, has:function(string):boolean}}
      */
     build() {
         this.refs.forEach(a => a.resolve(this));
-
-        return reduce(this.definitions, (r, k, definition) => {
-            if (definition.isPublic) {
-                ensure(r, k, definition.resolve(this));
+        Object.values(this.definitions).forEach(a => {
+            if (a.isPublic && !a.isLazy) {
+                a.resolve(this);
             }
+        });
 
-            return r;
-        }, {});
+        return Di(this);
     }
 }

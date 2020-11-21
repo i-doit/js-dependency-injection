@@ -8,6 +8,14 @@ export {
     ParameterParser,
     ServiceParser,
 } from './classes/Parser';
+export {
+    Definition,
+    Parameter,
+    Call,
+    ServiceRef,
+    ParameterRef,
+    TaggedRef,
+} from './classes/Resolveable';
 import Facade from './classes/Facade';
 
 export default Facade;

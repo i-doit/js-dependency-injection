@@ -10,6 +10,11 @@ export default class Definition extends Resolveable {
     isPublic = false;
 
     /**
+     * @type {boolean}
+     */
+    isLazy = true;
+
+    /**
      * @type {string}
      */
     name;
@@ -52,6 +57,16 @@ export default class Definition extends Resolveable {
      */
     setPublic(value) {
         this.isPublic = value;
+
+        return this;
+    }
+
+    /**
+     * @param {boolean} value
+     * @return {Definition}
+     */
+    setLazy(value) {
+        this.isLazy = value;
 
         return this;
     }

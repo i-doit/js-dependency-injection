@@ -1,6 +1,6 @@
 import reduce from '../../utils/reduce';
 import DiBuilder from '../DiBuilder';
-import { Call, Definition, ParameterRef, ServiceRef } from '../Resolveable';
+import { Call, Definition, ParameterRef, ServiceRef, TaggedRef } from '../Resolveable';
 import Parser from './Parser';
 
 export default class ServiceParser extends Parser {
@@ -26,6 +26,10 @@ export default class ServiceParser extends Parser {
 
             if (object.public) {
                 service.setPublic(true);
+            }
+
+            if (typeof object.lazy !== 'undefined' && !object.lazy) {
+                service.setLazy(false);
             }
 
             (object.tags || []).forEach(tag => service.addTag(tag));
@@ -71,6 +75,10 @@ export default class ServiceParser extends Parser {
      */
     parseArg(arg) {
         if (typeof arg === 'string') {
+            // if argument is a string that starts with !tagged - parse it as a tagged reference
+            if (arg.startsWith('!tagged ')) {
+                return new TaggedRef(arg.substring('!tagged '.length));
+            }
             // if argument is a string that starts with @ - parse it as a service reference
             if (arg[0] === '@') {
                 return new ServiceRef(arg.substring(1));
