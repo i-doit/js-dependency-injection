@@ -9,7 +9,7 @@ The goal of the dependency injection technique is to remove this dependency by s
 ## Installation
 
 ```shell
-npm install js-dependency-injection
+npm install @i-doit/js-dependency-injection
 ```
 
 ## Basic Example
@@ -17,7 +17,7 @@ npm install js-dependency-injection
 To use the DI, you have to create a DiBuilder. It is responsible for the registration and resolving of all the dependencies.
 
 ```js
-import { DiBuilder } from 'js-dependency-injection';
+import { DiBuilder } from '@i-doit/js-dependency-injection';
 ```
 
 Create a DiBuilder instance and register the needed services and parameters.
@@ -67,7 +67,7 @@ Facade is a set of helper methods to define your container builder with factory 
 
 ### Example of usage:
 ```js
-import $ from 'js-dependency-injection';
+import $ from '@i-doit/js-dependency-injection';
 
 export default $.di('example',
     $.s('service',

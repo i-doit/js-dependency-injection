@@ -1,6 +1,6 @@
 {
-    "name": "js-dependency-injection",
-    "version": "1.0.0",
+    "name": "@i-doit/js-dependency-injection",
+    "version": "1.0.1",
     "description": "Dependency Injection container inspired by Symfony DI",
     "main": "./lib/index.js",
     "module": "es/index.js",
