@@ -56,7 +56,7 @@ export default class ServiceParser extends Parser {
         }
 
         if (Array.isArray(arg)) {
-            return new Call(arg[0], arg.slice(1).map(a => this.parseArg(a)));
+            return new Call(arg[0], ...arg.slice(1).map(a => this.parseArg(a)));
         }
 
         if (Call.isPrototypeOf(arg)) {

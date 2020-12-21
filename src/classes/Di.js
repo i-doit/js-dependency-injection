@@ -13,13 +13,14 @@ const Di = builder => {
 
     return {
         get: key => {
-            if (publicDefinitions.includes[key]) {
+            if (!publicDefinitions.includes(key)) {
                 throw 'Service ' + key + ' is not found';
             }
 
             return builder.get(key);
         },
-        has: key => publicDefinitions.includes[key]
+        has: key => publicDefinitions.includes(key),
+        keys: () => publicDefinitions,
     };
 }
 

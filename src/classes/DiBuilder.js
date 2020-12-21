@@ -34,15 +34,9 @@ export default class DiBuilder {
             args.forEach(a => a.name = prefix + '.' + a.name);
         }
 
-        this.parameters = args.filter(a => Parameter.prototype.isPrototypeOf(a)).reduce((r, a) => ({
-            ...r,
-            [a.name]: a
-        }), {});
-        this.definitions = args.filter(a => Definition.prototype.isPrototypeOf(a)).reduce((r, a) => ({
-            ...r,
-            [a.name]: a
-        }), {});
-        this.refs = args.filter(a => Ref.prototype.isPrototypeOf(a));
+        args.filter(a => Parameter.prototype.isPrototypeOf(a)).forEach(a => this.addParameter(a));
+        args.filter(a => Definition.prototype.isPrototypeOf(a)).forEach(a => this.addDefinition(a));
+        args.filter(a => Ref.prototype.isPrototypeOf(a)).forEach(a => this.addRef(a));
     }
 
     /**
