@@ -2,7 +2,7 @@ import babel from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
-import { terser } from 'rollup-plugin-terser'
+import esbuild from 'rollup-plugin-esbuild';
 import pkg from './package.json'
 
 const env = process.env.NODE_ENV;
@@ -28,13 +28,8 @@ const config = {
 
 if (env === 'production') {
     config.plugins.push(
-        terser({
-            compress: {
-                pure_getters: true,
-                unsafe: true,
-                unsafe_comps: true,
-                warnings: false,
-            },
+        esbuild({
+            minify: true,
         })
     );
 }

@@ -7,6 +7,8 @@ module.exports = {
     plugins: [
         cjs && ['@babel/transform-modules-commonjs', { loose }],
         "@babel/plugin-proposal-class-properties",
-        "@babel/plugin-syntax-export-default-from"
+        "@babel/plugin-syntax-export-default-from",
+        ["@babel/plugin-transform-private-property-in-object", { "loose": false }],
+        ["@babel/plugin-transform-private-methods", { "loose": false }]
     ].filter(Boolean)
 };
